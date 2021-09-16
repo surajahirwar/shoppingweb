@@ -1,0 +1,38 @@
+
+    .card{
+	height: 500px;
+	width: 800px;
+	margin-left: 100px;
+	margin-top: 10px;
+
+	}
+
+	.card img{
+		width:300px;
+		display: flex;
+		justify-content: right;
+		margin-right: 20px;
+		align-items: center;
+		flex-wrap: wrap;
+	}	
+
+	h5{
+		text-align: left;
+		color: black;
+	}
+
+	.card-body{
+		width: 100%;
+		/*display: flex;*/
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		position: absolute;
+		top: 150px;
+		left: 400px;
+		text-decoration: none;
+
+	}
+	.card-body h2 a{
+		text-decoration: none;
+	}

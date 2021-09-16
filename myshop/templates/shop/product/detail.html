@@ -1,0 +1,69 @@
+{% extends "shop/base.html"	%}
+{% load static %}
+{% block title %}
+{{ product.name	}}
+{% endblock	%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<div class="card card1">
+  <img  class="card-img-top imgBx" src="{% if	product.image %}{{ product.image.url }}{% else 				%}{%static 'img/no_image.png' %}{% endif %}"  alt="{{ product.name }}">
+ 	
+   <p class="card-text">{{ product.description|linebreaks }}</p>
+
+	
+
+</div>
+ <div class="card-body card-body1">
+	 <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+   <h5 class="card-title"  href="{{ product.get_absolute_url }}">{{ product.name}} ${{	product.price }}
+  </h5>  
+  <form action="{% url 'cart:cart_add' product.id	%}"	method="post">
+		{{ cart_product_form }}
+		{% csrf_token %}
+	<input	type="submit" value="Add to cart">
+</form>
+  </div>
+
+
+{% endblock	%}
+
+</table>
+		<table class="cart">
+<thead>
+  
+</thead>
+<tbody>
+
+<tr>
+    <td>
+        <a	href="{{ product.get_absolute_url }}">
+            
+            </a>
+    </td>
+    <td>{{ product.name }}</td>
+    <td>
+       <form action="{% url 'cart:cart_add' product.id %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+</form>
+</td>
+
+
+
+    <td><a	href="{% url 'cart:cart_remove'	product.id %}">Remove</a></td>
+</tr>
+		
+				<tr	class="total">
+					<td>Total</td>
+					<td	colspan="4"></td>
+					<td	class="num">${{	cart.get_total_price }}</td>
+    				<td class="num">${{ item.total_price }}</td>
+				</tr>
+				</tbody>
+		</table>
+	<p	class="text-right">
+		<a	href="{% url 'shop:product_list' %}" class="button light">Continue	shopping</a>
+		<a	href="#" class="button">Checkout</a>
+		</p>
