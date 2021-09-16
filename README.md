@@ -1,0 +1,2 @@
+# shoppingweb
+django shopping website 
